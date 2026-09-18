@@ -3,7 +3,6 @@ package cn.xiaohai.xmcpaykit;
 import cn.xiaohai.xmcpay.api.XMcPayAPI;
 import cn.xiaohai.xmcpaykit.command.KitAdminCommand;
 import cn.xiaohai.xmcpaykit.command.KitCommand;
-import cn.xiaohai.xmcpaykit.command.LanguageAdminCommand;
 import cn.xiaohai.xmcpaykit.listener.ChatInputListener;
 import cn.xiaohai.xmcpaykit.listener.PaymentSuccessListener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -101,12 +100,12 @@ public final class XMcPayKit extends JavaPlugin {
     private void registerSubCommands() {
         boolean kitRegistered = api.registerSubCommand(new KitCommand());
         boolean adminRegistered = api.registerSubCommand(new KitAdminCommand());
-        boolean langRegistered= api.registerSubCommand(new LanguageAdminCommand());
-        if (kitRegistered && adminRegistered && langRegistered) {
-            getLogger().info("子命令注册成功: /xpay kit, /xpay kitadmin,/xpay langadmin");
+
+        if (kitRegistered && adminRegistered) {
+            getLogger().info("子命令注册成功: /xpay kit, /xpay kitadmin");
         } else {
             getLogger().warning("部分子命令注册失败（kit=" + kitRegistered
-                    + ", kitadmin=" + adminRegistered + ",langadmin"+langRegistered+"）");
+                    + ", kitadmin=" + adminRegistered + "）");
         }
     }
 }

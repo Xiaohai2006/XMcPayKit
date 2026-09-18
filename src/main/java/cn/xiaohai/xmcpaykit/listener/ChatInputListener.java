@@ -2,7 +2,6 @@ package cn.xiaohai.xmcpaykit.listener;
 
 import cn.xiaohai.xmcpaykit.XMcPayKit;
 import cn.xiaohai.xmcpaykit.data.KitDataManager;
-import cn.xiaohai.xmcpaykit.data.LanguageEntry;
 import cn.xiaohai.xmcpaykit.menu.admin.KitEditorMenu;
 import cn.xiaohai.xmcpaykit.util.MessageUtil;
 import org.bukkit.entity.Player;
@@ -112,9 +111,9 @@ public class ChatInputListener implements Listener {
      */
     private void handleKitNameInput(Player player, String kitId, String message) {
         if (dataManager.updateKitName(kitId, message)) {
-            MessageUtil.send(player, LanguageEntry.getUpdatePackageName() + message);
+            MessageUtil.send(player, "&a礼包名称已更新为: " + message);
         } else {
-            MessageUtil.send(player, LanguageEntry.getUpdatePackageNameError());
+            MessageUtil.send(player, "&c更新礼包名称失败！");
         }
         reopenEditor(player, kitId);
     }
@@ -126,7 +125,7 @@ public class ChatInputListener implements Listener {
         try {
             int price = Integer.parseInt(message.trim());
             if (price < 0) {
-                MessageUtil.send(player, LanguageEntry.getNegativePrice());
+                MessageUtil.send(player, "&c价格不能为负数！");
                 reopenEditor(player, kitId);
                 return;
             }
@@ -149,7 +148,7 @@ public class ChatInputListener implements Listener {
         try {
             int money = Integer.parseInt(message.trim());
             if (money < 0) {
-                MessageUtil.send(player, LanguageEntry.getNegativePrice());
+                MessageUtil.send(player, "&c价格不能为负数！");
                 reopenEditor(player, kitId);
                 return;
             }

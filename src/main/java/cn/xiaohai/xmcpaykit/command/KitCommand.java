@@ -4,7 +4,6 @@ import cn.xiaohai.xmcpay.api.command.SubCommand;
 import cn.xiaohai.xmcpay.utility.TextUtil;
 import cn.xiaohai.xmcpaykit.data.KitDataManager;
 import cn.xiaohai.xmcpaykit.data.KitEntry;
-import cn.xiaohai.xmcpaykit.data.LanguageEntry;
 import cn.xiaohai.xmcpaykit.menu.KitMenu;
 import cn.xiaohai.xmcpaykit.service.KitPurchaseService;
 import cn.xiaohai.xmcpaykit.util.MessageUtil;
@@ -35,7 +34,7 @@ public class KitCommand implements SubCommand {
 
     @Override
     public String getDescription() {
-        return LanguageEntry.getDescription();
+        return "打开礼包菜单，或按礼包名称直接购买";
     }
 
     @Override
@@ -60,8 +59,8 @@ public class KitCommand implements SubCommand {
         String query = String.join(" ", args).trim();
         String kitId = findKitId(query);
         if (kitId == null) {
-            MessageUtil.send(player, LanguageEntry.getNotFound() + query);
-            MessageUtil.send(player, LanguageEntry.getViewAvailable());
+            MessageUtil.send(player, "&c未找到礼包: &f" + query);
+            MessageUtil.send(player, "&7请使用 &f/xpay kit &7查看可用礼包。");
             return true;
         }
 
