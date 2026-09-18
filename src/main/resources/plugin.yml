@@ -1,0 +1,11 @@
+name: XMcPayKit
+version: '${project.version}'
+main: cn.xiaohai.xmcpaykit.XMcPayKit
+description: XMcPay 礼包系统：可视化配置礼包，支持点券与微信/支付宝购买
+authors: [xiaohai]
+depend:
+  - XMcPay
+permissions:
+  xmcpaykit.admin:
+    description: 礼包管理权限（管理GUI与 kitadmin 子命令）
+    default: op
