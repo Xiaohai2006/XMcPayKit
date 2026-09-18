@@ -3,6 +3,8 @@ package cn.xiaohai.xmcpaykit.command;
 import cn.xiaohai.xmcpay.api.command.SubCommand;
 import cn.xiaohai.xmcpaykit.data.KitDataManager;
 import cn.xiaohai.xmcpaykit.data.KitEntry;
+import cn.xiaohai.xmcpaykit.data.LanguageDataManager;
+import cn.xiaohai.xmcpaykit.data.LanguageEntry;
 import cn.xiaohai.xmcpaykit.menu.admin.KitAdminMenu;
 import cn.xiaohai.xmcpaykit.util.MessageUtil;
 import org.bukkit.command.Command;
@@ -27,7 +29,6 @@ public class KitAdminCommand implements SubCommand {
             Arrays.asList("create", "delete", "reload", "list", "clear");
 
     private final KitDataManager dataManager = new KitDataManager();
-
     @Override
     public String getName() {
         return "kitadmin";
@@ -35,7 +36,7 @@ public class KitAdminCommand implements SubCommand {
 
     @Override
     public String getDescription() {
-        return "打开礼包管理界面（需要管理员权限）";
+        return LanguageEntry.getManagementInterface();
     }
 
     @Override
@@ -46,13 +47,13 @@ public class KitAdminCommand implements SubCommand {
     @Override
     public boolean execute(CommandSender commandSender, Command command, String s, String[] args) {
         if (!(commandSender instanceof Player)) {
-            commandSender.sendMessage("§c请在游戏内执行此命令！");
+            commandSender.sendMessage(LanguageEntry.getExecuteSucceed());
             return true;
         }
 
         Player player = (Player) commandSender;
         if (!player.hasPermission(PERMISSION)) {
-            MessageUtil.send(player, "&c你没有权限执行此命令！");
+            MessageUtil.send(player, LanguageEntry.getExecuteError());
             return true;
         }
 
@@ -69,7 +70,7 @@ public class KitAdminCommand implements SubCommand {
                 case "clear":
                     return handleClear(player, args);
                 default:
-                    MessageUtil.send(player, "&c未知子命令！可用命令: create, delete, reload, list, clear");
+                    MessageUtil.send(player, LanguageEntry.getExecuteUnknown());
                     return true;
             }
         }
@@ -98,7 +99,7 @@ public class KitAdminCommand implements SubCommand {
      */
     private boolean handleCreate(Player player, String[] args) {
         if (args.length < 5) {
-            MessageUtil.send(player, "&c用法: /xpay kitadmin create <ID> <名称> <点券价格> <现金价格>");
+            MessageUtil.send(player, LanguageEntry.getUsage());
             return true;
         }
 
@@ -121,7 +122,6 @@ public class KitAdminCommand implements SubCommand {
             MessageUtil.send(player, "&7使用 /xpay kitadmin 打开管理界面编辑礼包物品与奖励命令");
             return true;
         }
-
         if (dataManager.hasKit(kitId)) {
             MessageUtil.send(player, "&c礼包ID '" + kitId + "' 已存在！");
             MessageUtil.send(player, "&7当前所有礼包ID: " + dataManager.getAllKitIds());
@@ -180,6 +180,7 @@ public class KitAdminCommand implements SubCommand {
         if (args.length < 2 || !args[1].equalsIgnoreCase("confirm")) {
             MessageUtil.send(player, "&c&l警告：此操作将删除所有礼包！");
             MessageUtil.send(player, "&c如果确定要清空，请使用: /xpay kitadmin clear confirm");
+
             return true;
         }
 

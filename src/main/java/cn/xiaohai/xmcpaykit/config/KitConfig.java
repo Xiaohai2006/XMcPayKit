@@ -69,11 +69,21 @@ public final class KitConfig {
     public static final String LANG_PAY_BALANCE = "pay.balance";
     public static final String LANG_PAY_PLAYER_INV = "pay.player-inv";
     public static final String LANG_PAY_UNAVAILABLE = "pay.unavailable";
-    public static final String LANG_KIT_NO_PERMISSION = "kit.no-permission";
-    public static final String LANG_KIT_PURCHASE_LIMIT = "kit.purchase-limit";
-    public static final String LANG_KIT_NOT_FOUND = "kit.not-found";
-    public static final String LANG_KIT_INVALID_PRICE = "kit.invalid-price";
-
+    public static final String LANG_KIT_NO_PERMISSION = "pay.no-permission";
+    public static final String LANG_KIT_PURCHASE_LIMIT = "pay.purchase-limit";
+    public static final String LANG_KIT_NOT_FOUND = "pay.not-found";
+    public static final String LANG_KIT_INVALID_PRICE = "pay.invalid-price";
+    public static final String LANG_KIT_MANAGEMENT_INTERFACE = "pay.management-interface";
+    public static final String LANG_KIT_EXECUTE_SUCCEED = "pay.execute_succeed";
+    public static final String LANG_KIT_EXECUTE_ERROR = "pay.execute_error";
+    public static final String LANG_KIT_EXECUTE_UNKNOWN="pay.execute_unknown";
+    public static final String LANG_KIT_USAGE="pay.execute_usage";
+    public static final String LANG_KIT_DESCRIPTION="pay.execute_description";
+    public static final String LANG_KIT_NOTFOUND="pay.execute_notfound";
+    public static final String LANG_KIT_VIEW_AVAILABLE="pay.execute_view-available";
+    public static final String LANG_KIT_UPDATE_PACKAGENAME="pay.execute_update-package-name";
+    public static final String LANG_KIT_UPDATE_PACKAGE_NAME_ERROR="pay.execute_update-package-name-error";
+    public static final String LANG_KIT_NEGATIVE_PRICE="pay.execute_negative-price";
     /**
      * 礼包根节点路径，例如 {@code kits.name}
      */
